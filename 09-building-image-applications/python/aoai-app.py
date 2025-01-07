@@ -13,11 +13,11 @@ dotenv.load_dotenv()
 # Assign the API version (DALL-E is currently supported for the 2023-06-01-preview API version only)
 client = AzureOpenAI(
   api_key=os.environ['AZURE_OPENAI_API_KEY'],  # this is also the default, it can be omitted
-  api_version = "2023-12-01-preview",
+  api_version = "2024-02-01",
   azure_endpoint=os.environ['AZURE_OPENAI_ENDPOINT'] 
   )
 
-model = os.environ['AZURE_OPENAI_DEPLOYMENT']
+model = os.environ['AZURE_OPENAI_IMAGE_DEPLOYMENT']
 
 
 try:
@@ -58,11 +58,4 @@ try:
 finally:
     print("completed!")
 # ---creating variation below---
-
-
-response = client.images.create_variation(
-  image=open(image_path, "rb"),
-  n=1,
-  size="1024x1024"
-)
 
